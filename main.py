@@ -14,7 +14,8 @@ def main():
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
 
-    #import pygame
+    clock = pygame.time.Clock()   # Add pygame.time.Clock object and set an instance variable.
+    dt = 0                # delta-time --The time passed since last frame was drawn
 
 
 
@@ -25,8 +26,10 @@ def main():
             if event.type == pygame.QUIT:
                 return  # This will break the loop safely  Boot's suggested "running == False"
 
+        dt = (clock.tick(60))/1000                # pause the loop until 1/60 second has passed  
         screen.fill((0, 0, 0))     # Fill the screen with black
         pygame.display.flip()      # Update the display
+
 
     pygame.quit()
 
