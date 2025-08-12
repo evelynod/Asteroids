@@ -26,7 +26,7 @@ def main():
     x = SCREEN_WIDTH / 2
     y = SCREEN_HEIGHT / 2
 
-    player = CircleShape.Player(x,y)
+    player = Player(x,y)
 
 
 
