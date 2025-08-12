@@ -4,6 +4,7 @@
 import pygame
 from constants import *
 from circleshape import CircleShape
+from player import Player
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT)) #2.12
 
 

@@ -6,7 +6,7 @@ class Player(CircleShape):
     def __init__(self, x, y):                  #  The Player constructor should take x and y integers as input, then:
         super().__init(x,y,PLAYER_RADIUS)      # Call the parent class's constructor, also passing in PLAYER_RADIUS
         self.rotation = 0                           # Create a field called rotation, initialized to 0 (What is a field?)
-        self.x = x
+        self.x = x                                  # Boots answered that a field is another name for instance variable, and needs self.--
         self.y = y
 
 
@@ -33,7 +33,7 @@ class Player(CircleShape):
         draw_color = "white"
         triangle_points = self.triangle()
         line_width = 2
-        screen.pygame.draw.polygon(screen, draw_color, triangle_points, line_width)  
+        pygame.draw.polygon(screen, draw_color, triangle_points, line_width)  
 
-        # At present, I'm not sure what to do here.
+        
         return       
