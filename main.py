@@ -3,6 +3,7 @@
 # throughout this file
 import pygame
 from constants import *
+from circleshape import CircleShape
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT)) #2.12
 
 
@@ -17,6 +18,14 @@ def main():
     clock = pygame.time.Clock()   # Add pygame.time.Clock object and set an instance variable.
     dt = 0                # delta-time --The time passed since last frame was drawn
 
+    # In your main function, instantiate a Player object.
+    #  You can pass these values to the constructor 
+    # to spawn it in the middle of the screen:
+
+    x = SCREEN_WIDTH / 2
+    y = SCREEN_HEIGHT / 2
+
+    player = CircleShape.Player(x,y)
 
 
 
@@ -28,6 +37,7 @@ def main():
 
         dt = (clock.tick(60))/1000                # pause the loop until 1/60 second has passed  
         screen.fill((0, 0, 0))     # Fill the screen with black
+        player.draw(screen)
         pygame.display.flip()      # Update the display
 
 
