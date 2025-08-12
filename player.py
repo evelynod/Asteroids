@@ -5,7 +5,7 @@ from constants import PLAYER_RADIUS
 class Player(CircleShape):    
     def __init__(self, x, y):                  #  The Player constructor should take x and y integers as input, then:
         super().__init(x,y,PLAYER_RADIUS)      # Call the parent class's constructor, also passing in PLAYER_RADIUS
-        rotation = 0                           # Create a field called rotation, initialized to 0 (What is a field?)
+        self.rotation = 0                           # Create a field called rotation, initialized to 0 (What is a field?)
         self.x = x
         self.y = y
 
