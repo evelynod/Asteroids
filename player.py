@@ -57,5 +57,5 @@ class Player(CircleShape):
         if keys[pygame.K_d]:
            self.rotate(dt)     # I have not defined player yet, so why is this not causing an error?
         if keys[pygame.K_a]:          # Is it because the player is being locally created and destroyed right here?
-           dt = dt * -1               # Is there a more Pythonesque way to negate a number?
+           dt = -dt            
            self.rotate(dt)
