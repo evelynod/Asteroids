@@ -32,14 +32,15 @@ def main():
 
     running = True
     while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                return  # This will break the loop safely  Boot's suggested "running == False"
+     for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            return  # This will break the loop safely  Boot's suggested "running == False"
 
         dt = (clock.tick(60))/1000                # pause the loop until 1/60 second has passed  
         screen.fill((0, 0, 0))     # Fill the screen with black
-        player.draw(screen)
         player.update(dt)
+        player.draw(screen)
+       # player.update(dt)
         pygame.display.flip()      # Update the display
        # player.update(dt)
 

@@ -41,13 +41,13 @@ class Player(CircleShape):
     # When it's called, it should add (PLAYER_TURN_SPEED * dt) to the player's current rotation.
     
     def rotate(self, dt):
-        return (PLAYER_TURN_SPEED * dt) + self.rotation
+        self.rotation = (PLAYER_TURN_SPEED * dt) + self.rotation
     
     # Paste in the following update method to the Player class:
     # Update the missing lines to call the rotate method with the dt argument.
     # To go left instead of right when a is pressed, 
     # you'll need to reverse dt... how can you do that...?
-    
+
     # Hook the update method into the game loop by calling it on the player object each frame before rendering.
 
 
@@ -55,7 +55,7 @@ class Player(CircleShape):
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_a]:
-           self.player.rotate(dt)     # I have not defined player yet, so why is this not causing an error?
+           self.rotate(dt)     # I have not defined player yet, so why is this not causing an error?
         if keys[pygame.K_d]:          # Is it because the player is being locally created and destroyed right here?
            dt = dt * -1               # Is there a more Pythonesque way to negate a number?
-           self.player.rotate(dt)
+           self.rotate(dt)
