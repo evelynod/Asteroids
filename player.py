@@ -2,6 +2,7 @@ import pygame                # Not sure if I need this.  Hello, Boots?  I hope y
 from circleshape import CircleShape
 from constants import PLAYER_RADIUS
 from constants import PLAYER_TURN_SPEED 
+from constants import PLAYER_SPEED
 
 class Player(CircleShape):    
     def __init__(self, x, y):                  #  The Player constructor should take x and y integers as input, then:
@@ -49,13 +50,31 @@ class Player(CircleShape):
     # you'll need to reverse dt... how can you do that...?
 
     # Hook the update method into the game loop by calling it on the player object each frame before rendering.
-
+    #VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVvv
 
     def update(self, dt):
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_d]:
-           self.rotate(dt)     # I have not defined player yet, so why is this not causing an error?
-        if keys[pygame.K_a]:          # Is it because the player is being locally created and destroyed right here?
+           self.rotate(dt)     
+        if keys[pygame.K_a]:          
            dt = -dt            
            self.rotate(dt)
+        if keys[pygame.K_w]:                 
+           self.move(dt)
+        if keys[pygame.K_s]:
+           dt = -dt
+           self.move(dt)
+
+
+    # Add a new method to the Player class called .move().  It takes one argument, dt.
+    # We want to modify the player's position; but first, we need to do a little bit of math.
+    # We start with a unit vector pointing straight up from (0, 0) to (0, 1).
+    # We rotate that vector by the player's rotation, so it's pointing in the direction the player is facing.
+    # We multiply by PLAYER_SPEED * dt. A larger vector means faster movement.
+    # Add the vector to our position to move the player.
+    #VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVv
+
+    def move(self, dt):
+        forward = pygame.Vector2(0, 1).rotate(self.rotation)
+        self.position += forward * PLAYER_SPEED * dt
