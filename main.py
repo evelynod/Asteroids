@@ -39,7 +39,9 @@ def main():
         dt = (clock.tick(60))/1000                # pause the loop until 1/60 second has passed  
         screen.fill((0, 0, 0))     # Fill the screen with black
         player.draw(screen)
+        player.update(dt)
         pygame.display.flip()      # Update the display
+       # player.update(dt)
 
 
     pygame.quit()
