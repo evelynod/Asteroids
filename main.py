@@ -5,6 +5,7 @@ import pygame
 from constants import *
 from circleshape import CircleShape
 from player import Player
+from asteroid import Asteroid
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT)) #2.12
 
 
@@ -30,10 +31,19 @@ def main():
     # Create two groups in main(), updatable and drawable
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
+
     # Set both groups as containers for the Player.
     # player = Player(x,y)  
+
     Player.containers = (updatable, drawable)  # Create all Player ojects after this.  What does that mean?
-    player = Player(x,y)    
+    player = Player(x,y)   
+
+    #n the initialization code in main (before the game loop starts),
+    #  create a new pygame.sprite.Group 
+    # which will contain all of the asteroids. 
+
+    asteroids = pygame.sprite.Group()
+    Asteroid.containers = (asteroids, updatable, drawable)
 
 
 
