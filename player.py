@@ -1,4 +1,4 @@
-import pygame                # Not sure if I need this.  Hello, Boots?  I hope you are having a nice day.  Do I need import pygame?
+import pygame               
 from circleshape import CircleShape
 from constants import PLAYER_RADIUS
 from constants import PLAYER_TURN_SPEED 

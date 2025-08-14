@@ -25,8 +25,15 @@ def main():
 
     x = SCREEN_WIDTH / 2
     y = SCREEN_HEIGHT / 2
+    
 
-    player = Player(x,y)
+    # Create two groups in main(), updatable and drawable
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    # Set both groups as containers for the Player.
+    # player = Player(x,y)  
+    Player.containers = (updatable, drawable)  # Create all Player ojects after this.  What does that mean?
+    player = Player(x,y)    
 
 
 
@@ -34,15 +41,17 @@ def main():
     while running:
         for event in pygame.event.get():
              if event.type == pygame.QUIT:
-                 return  # This will break the loop safely  Boot's suggested "running == False"
+                 return  
+              
+        updatable.update(dt) 
+        screen.fill((0, 0, 0))                    # Fill the screen with black
 
-        dt = (clock.tick(60))/1000                # pause the loop until 1/60 second has passed  
-        screen.fill((0, 0, 0))     # Fill the screen with black
-        player.update(dt)
-        player.draw(screen)
-       
-        pygame.display.flip()      # Update the display
-       
+        for drawable_thing in drawable:           # Loop over all "drawables" and .draw() them individually.
+            drawable_thing.draw(screen)
+
+                 
+        pygame.display.flip()                     # Update the display
+        dt = (clock.tick(60))/1000                # pause the loop until 1/60 second has passed   
 
 
     pygame.quit()
