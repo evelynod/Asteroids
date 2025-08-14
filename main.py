@@ -6,6 +6,8 @@ from constants import *
 from circleshape import CircleShape
 from player import Player
 from asteroid import Asteroid
+from asteroidfield import AsteroidField
+
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT)) #2.12
 
 
