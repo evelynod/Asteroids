@@ -37,7 +37,7 @@ def main():
     # Set both groups as containers for the Player.
     # player = Player(x,y)  
 
-    Player.containers = (updatable, drawable)  # Create all Player ojects after this.  What does that mean?
+    Player.containers = (updatable, drawable)  # Create all Player ojects after this.  
     player = Player(x,y)   
 
     #n the initialization code in main (before the game loop starts),
@@ -46,6 +46,12 @@ def main():
 
     asteroids = pygame.sprite.Group()
     Asteroid.containers = (asteroids, updatable, drawable)
+    
+    
+    AsteroidField.containers = (updatable,)
+    asteroid_field = AsteroidField()
+
+    
 
 
 

@@ -32,7 +32,7 @@ class Player(CircleShape):
 
     #draw_color = "white"
     def draw(self, screen ):
-        draw_color = "white"
+        draw_color = (200,255, 100)   #custom lime green
         triangle_points = self.triangle()
         line_width = 2
         pygame.draw.polygon(screen, draw_color, triangle_points, line_width)  
