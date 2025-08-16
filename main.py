@@ -62,6 +62,18 @@ def main():
                  return  
               
         updatable.update(dt) 
+        # After the update step in your game loop, 
+        # iterate over all of the objects in your asteroids group.
+        #  Check if any of them collide with the player.
+        #  If a collision is detected, the program should 
+        # print Game over! and immediately exit the program.
+        for asteroid in asteroids:
+            if player.collision_detection(asteroid) == True:
+                print (f"Game over!")
+                exit()
+
+
+
         screen.fill((0, 0, 0))                    # Fill the screen with black
 
         for drawable_thing in drawable:           # Loop over all "drawables" and .draw() them individually.
