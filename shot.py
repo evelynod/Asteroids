@@ -12,3 +12,7 @@ class Shot(CircleShape):
 
     def draw (self, screen):
         pygame.draw.circle(screen, (150, 150, 255), self.position, SHOT_RADIUS, 2)   # Not sure if I want the line-width 2 here.)
+
+    def update(self, dt):
+        self.position = self.position + (self.velocity * dt)
+        return

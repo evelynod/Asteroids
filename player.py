@@ -1,8 +1,11 @@
 import pygame               
 from circleshape import CircleShape
+from shot import Shot
 from constants import PLAYER_RADIUS
 from constants import PLAYER_TURN_SPEED 
 from constants import PLAYER_SPEED
+from constants import PLAYER_SHOOT_SPEED
+from constants import SHOT_RADIUS
 
 class Player(CircleShape):    
     def __init__(self, x, y):                  #  The Player constructor should take x and y integers as input, then:
@@ -78,3 +81,18 @@ class Player(CircleShape):
     def move(self, dt):
         forward = pygame.Vector2(0, 1).rotate(self.rotation)
         self.position += forward * PLAYER_SPEED * dt
+
+   # In your Player class, add a new method called shoot. This method should:
+
+   # Create a new shot at the position of the player
+   # Set the shot's velocity:
+   #     Start with a pygame.Vector2 of (0, 1)
+     #    .rotate() it in the direction the player is facing
+    #    Scale it up (multiply by PLAYER_SHOOT_SPEED) to make it move faster
+
+    def shoot(self):   
+        bullet = Shot(self.position.x, self.position.y, SHOT_RADIUS)      #This is creating the Shot object, with variable name "bullet"
+        bullet.velocity = pygame.Vector2(0,1)
+
+        bullet.velocity = bullet.velocity.rotate(self.rotation) * PLAYER_SHOOT_SPEED
+     

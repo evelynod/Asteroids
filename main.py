@@ -54,7 +54,7 @@ def main():
 
     #bullet = Shot(x,y)
 
-    bullets = pygame.sprite.Group()
+    bullets = pygame.sprite.Group()                          # The Shot objects will be stored here once they are created.
     Shot.containers = (bullets, updatable, drawable)
 
     
