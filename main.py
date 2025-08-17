@@ -52,7 +52,7 @@ def main():
     AsteroidField.containers = (updatable,)
     asteroid_field = AsteroidField()
 
-    #bullet = Shot(x,y)
+    
 
     bullets = pygame.sprite.Group()                          # The Shot objects will be stored here once they are created.
     Shot.containers = (bullets, updatable, drawable)
@@ -66,7 +66,8 @@ def main():
         for event in pygame.event.get():
              if event.type == pygame.QUIT:
                  return  
-              
+        # Decrease the timer by dt every time update is called on the player
+           
         updatable.update(dt) 
         # After the update step in your game loop, 
         # iterate over all of the objects in your asteroids group.

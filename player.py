@@ -6,6 +6,7 @@ from constants import PLAYER_TURN_SPEED
 from constants import PLAYER_SPEED
 from constants import PLAYER_SHOOT_SPEED
 from constants import SHOT_RADIUS
+from constants import PLAYER_SHOOT_COOLDOWN
 
 class Player(CircleShape):    
     def __init__(self, x, y):                  #  The Player constructor should take x and y integers as input, then:
@@ -13,6 +14,7 @@ class Player(CircleShape):
         self.rotation = 0                           # Create a field called rotation, initialized to 0 (What is a field?)
         self.x = x                                  # Boots answered that a field is another name for instance variable, and needs self.--
         self.y = y
+        self.timer = 0                             # 
         
 
     def triangle(self):                        # triangle method pasted into Player class 
@@ -56,6 +58,7 @@ class Player(CircleShape):
     #VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVvv
 
     def update(self, dt):
+        self.timer -= dt
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_d]:
@@ -68,6 +71,15 @@ class Player(CircleShape):
         if keys[pygame.K_s]:
            dt = -dt
            self.move(dt)
+        if keys[pygame.K_SPACE]:       # Call shoot method with spacebar press
+            
+            #Prevent the player from shooting if the timer is greater than 0
+            
+            while (self.timer <= 0):
+                self.shoot()
+            #When the player shoots, set the timer equal to a new constant. I called mine PLAYER_SHOOT_COOLDOWN and used 0.3
+            
+                self.timer = PLAYER_SHOOT_COOLDOWN
 
 
     # Add a new method to the Player class called .move().  It takes one argument, dt.
@@ -91,6 +103,7 @@ class Player(CircleShape):
     #    Scale it up (multiply by PLAYER_SHOOT_SPEED) to make it move faster
 
     def shoot(self):   
+        
         bullet = Shot(self.position.x, self.position.y, SHOT_RADIUS)      #This is creating the Shot object, with variable name "bullet"
         bullet.velocity = pygame.Vector2(0,1)
 
