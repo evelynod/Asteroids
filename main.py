@@ -88,8 +88,8 @@ def main():
             for bullet in bullets:
                 if bullet.collision_detection(asteroid)== True:
                     bullet.kill()
-                    asteroid.kill()
-                    
+                    asteroid.split()       #Instead of calling asteroid.kill() in our game loop, let's call asteroid.split().
+
 
 
         screen.fill((0, 0, 0))                    # Fill the screen with black
