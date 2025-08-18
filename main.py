@@ -79,6 +79,17 @@ def main():
                 print (f"Game over!")
                 exit()
 
+        # Add another collision check to the game loop. 
+        # Loop over each asteroid, and for each asteroid, 
+        # loop over each bullet. If a bullet and an asteroid collide, 
+        # call the .kill() method on both objects to remove them from the game.
+
+        for asteroid in asteroids:
+            for bullet in bullets:
+                if bullet.collision_detection(asteroid)== True:
+                    bullet.kill()
+                    asteroid.kill()
+                    
 
 
         screen.fill((0, 0, 0))                    # Fill the screen with black
